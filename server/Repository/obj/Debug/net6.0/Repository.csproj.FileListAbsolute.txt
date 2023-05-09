@@ -1,0 +1,12 @@
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\bin\Debug\net6.0\Repository.deps.json
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\bin\Debug\net6.0\Repository.dll
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\bin\Debug\net6.0\Repository.pdb
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\obj\Debug\net6.0\Repository.csproj.AssemblyReference.cache
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\obj\Debug\net6.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\obj\Debug\net6.0\Repository.AssemblyInfoInputs.cache
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\obj\Debug\net6.0\Repository.AssemblyInfo.cs
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\obj\Debug\net6.0\Repository.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\obj\Debug\net6.0\Repository.dll
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\obj\Debug\net6.0\refint\Repository.dll
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\obj\Debug\net6.0\Repository.pdb
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\obj\Debug\net6.0\ref\Repository.dll
