@@ -10,3 +10,7 @@ C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\DataAccess\obj\Debu
 C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\DataAccess\obj\Debug\net6.0\refint\DataAccess.dll
 C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\DataAccess\obj\Debug\net6.0\DataAccess.pdb
 C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\DataAccess\obj\Debug\net6.0\ref\DataAccess.dll
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\DataAccess\bin\Debug\net6.0\BusinessObject.dll
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\DataAccess\bin\Debug\net6.0\BusinessObject.pdb
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\DataAccess\obj\Debug\net6.0\DataAccess.csproj.CopyComplete
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\DataAccess\bin\Debug\net6.0\appsettings.json

@@ -1,5 +1,7 @@
-﻿using BusinessObject.DTOs.Product;
+﻿using AutoMapper;
+using BusinessObject.DTOs.Product;
 using BusinessObject.Models;
+using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,29 +12,39 @@ namespace Repository.impls
 {
     public class ProductRepository : IProductRepository
     {
-        public Task<string> Create(ProductDTO productDTO)
+
+        private readonly IMapper _mapper;
+        public ProductRepository(IMapper mapper)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
         }
 
-        public Task Delete(int id)
+        public Task<string> Create(ProductCreateUpdateDTO productDTO)
         {
-            throw new NotImplementedException();
+            var _product = _mapper.Map<Product>(productDTO);
+            return ProductDAO.Create(_product);
         }
 
-        public Task<Product> GetProduct(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            await ProductDAO.DeleteProduct(id);
         }
 
-        public Task<List<ProductDTO>> GetProducts()
+        public async Task<ProductDTO> GetProduct(int id)
         {
-            throw new NotImplementedException();
+           return _mapper.Map<ProductDTO>(await ProductDAO.GetProduct(id));
         }
 
-        public Task<string> Update(ProductDTO productDTO)
+        public async Task<List<ProductDTO>> GetProducts()
         {
-            throw new NotImplementedException();
+           return _mapper.Map<List<ProductDTO>>(await ProductDAO.GetProducts());
+        }
+
+
+        public Task<string> Update(ProductCreateUpdateDTO productDTO)
+        {
+            var _product = _mapper.Map<Product>(productDTO);
+            return ProductDAO.Update(_product);
         }
     }
 }

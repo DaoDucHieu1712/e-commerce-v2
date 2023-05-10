@@ -11,7 +11,7 @@ namespace Repository
     public interface IProductRepository
     {
         Task<List<ProductDTO>> GetProducts();
-        Task<Product> GetProduct(int id);
+        Task<ProductDTO> GetProduct(int id);
         Task<string> Create(ProductCreateUpdateDTO productDTO);
         Task<string> Update(ProductCreateUpdateDTO productDTO);
         Task Delete (int id);

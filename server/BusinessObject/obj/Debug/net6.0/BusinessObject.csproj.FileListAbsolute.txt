@@ -12,3 +12,4 @@ C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\BusinessObject\obj\
 C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\BusinessObject\obj\Debug\net6.0\BusinessObject.pdb
 C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\BusinessObject\obj\Debug\net6.0\BusinessObject.genruntimeconfig.cache
 C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\BusinessObject\obj\Debug\net6.0\ref\BusinessObject.dll
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\BusinessObject\bin\Debug\net6.0\appsettings.json

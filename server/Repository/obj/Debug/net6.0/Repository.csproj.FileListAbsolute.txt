@@ -10,3 +10,9 @@ C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\obj\Debu
 C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\obj\Debug\net6.0\refint\Repository.dll
 C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\obj\Debug\net6.0\Repository.pdb
 C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\obj\Debug\net6.0\ref\Repository.dll
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\bin\Debug\net6.0\BusinessObject.dll
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\bin\Debug\net6.0\DataAccess.dll
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\bin\Debug\net6.0\DataAccess.pdb
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\bin\Debug\net6.0\BusinessObject.pdb
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\obj\Debug\net6.0\Repository.csproj.CopyComplete
+C:\Users\ADMIN\OneDrive\Desktop\FPT\PRJ\e-commerce-v2\server\Repository\bin\Debug\net6.0\appsettings.json

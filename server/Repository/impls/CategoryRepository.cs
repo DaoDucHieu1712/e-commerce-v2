@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Repository.impls
 {
-    internal class CategoryRepository : ICategoryRepository
+    public class CategoryRepository : ICategoryRepository
     {
         private readonly IMapper _mapper;
         public CategoryRepository(IMapper mapper)
@@ -24,24 +24,25 @@ namespace Repository.impls
             return await CategoryDAO.Create(_category);
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            await CategoryDAO.Delete(id);
         }
 
-        public Task<List<CategoryDTO>> GetCategories()
+        public async Task<List<CategoryDTO>> GetCategories()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<CategoryDTO>>(await CategoryDAO.GetCategories());
         }
 
-        public Task<CategoryDTO> GetCategory(int id)
+        public async Task<CategoryDTO> GetCategory(int id)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<CategoryDTO>(await CategoryDAO.GetProduct(id));
         }
 
-        public Task<string> Update(CategoryCreateUpdateDTO categoryDTO)
+        public async Task<string> Update(CategoryCreateUpdateDTO categoryDTO)
         {
-            throw new NotImplementedException();
+            var _category = _mapper.Map<Category>(categoryDTO);
+            return await CategoryDAO.Create(_category);
         }
     }
 }
