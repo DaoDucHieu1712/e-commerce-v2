@@ -13,7 +13,7 @@ namespace Repository
         Task<List<CategoryDTO>> GetCategories();
         Task<CategoryDTO> GetCategory(int id);
         Task<string> Create(CategoryCreateUpdateDTO categoryDTO);
-        Task<string> Update(CategoryCreateUpdateDTO categoryDTO);
+        Task<string> Update(CategoryUpdateDTO categoryDTO);
         Task Delete(int id);
     }
 }

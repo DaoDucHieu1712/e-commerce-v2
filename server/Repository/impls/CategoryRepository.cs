@@ -39,10 +39,10 @@ namespace Repository.impls
             return _mapper.Map<CategoryDTO>(await CategoryDAO.GetProduct(id));
         }
 
-        public async Task<string> Update(CategoryCreateUpdateDTO categoryDTO)
+        public async Task<string> Update(CategoryUpdateDTO categoryDTO)
         {
             var _category = _mapper.Map<Category>(categoryDTO);
-            return await CategoryDAO.Create(_category);
+            return await CategoryDAO.Update(_category);
         }
     }
 }

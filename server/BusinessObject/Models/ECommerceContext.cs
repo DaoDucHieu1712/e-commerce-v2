@@ -33,6 +33,11 @@ namespace BusinessObject.Models
 
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }    
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+
+        public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -42,13 +47,61 @@ namespace BusinessObject.Models
                 entity.HasOne(e => e.Category)
                       .WithMany(e => e.Products)
                       .HasForeignKey(e => e.CategoryId)
-                      .OnDelete(DeleteBehavior.ClientSetNull)
+                      .OnDelete(DeleteBehavior.Restrict)
                       .HasConstraintName("FK_Product_Category");
             });
 
             modelBuilder.Entity<Category>(entity => {
                 entity.ToTable("Category");
                 entity.HasKey(e => e.Id);
+            });
+
+            modelBuilder.Entity<Account>(entity =>
+            {
+                entity.ToTable("Account");
+                entity.HasKey(e => e.Id);
+                entity.HasOne(e => e.Customer)
+                      .WithMany(e => e.Accounts)
+                      .HasForeignKey(e => e.CustomerId)
+                      .OnDelete(DeleteBehavior.Restrict)
+                      .HasConstraintName("FK_Account_Customer");
+
+                entity.HasOne(e => e.Employee)
+                      .WithMany(e => e.Accounts)
+                      .HasForeignKey(e => e.EmployeeId)
+                      .OnDelete(DeleteBehavior.Restrict)
+                      .HasConstraintName("FK_Account_Employee");
+
+            });
+            
+            modelBuilder.Entity<Customer>(entity =>
+            {
+                entity.ToTable("Customer");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.DayOfBirth).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<Employee>(entity =>
+            {
+                entity.ToTable("Employee");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.DayOfBirth).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<RefreshToken>(entity =>
+            {
+                entity.HasKey(e => e.TokenId);
+
+                entity.Property(e => e.Token)
+                   .IsRequired()
+                   .HasMaxLength(100);
+
+                entity.Property(e => e.TokenId)
+                    .IsRequired();
+
+                entity.Property(e => e.Created).HasColumnType("datetime");
+
+                entity.Property(e => e.Expires).HasColumnType("datetime");
             });
         }
     }

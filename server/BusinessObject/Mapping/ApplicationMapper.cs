@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BusinessObject.DTOs.Auth;
 using BusinessObject.DTOs.Category;
 using BusinessObject.DTOs.Product;
 using BusinessObject.Models;
@@ -20,7 +21,10 @@ namespace BusinessObject.Mapping
             //Category
             CreateMap<Category , CategoryDTO>().ReverseMap();
             CreateMap<Category, CategoryCreateUpdateDTO>().ReverseMap();
-
+            CreateMap<Category, CategoryUpdateDTO>().ReverseMap();
+            //Account
+            CreateMap<SignInDTO, Account>().ReverseMap();
+            CreateMap<AccountDTO, Account>().ReverseMap();
         }
     }
 }

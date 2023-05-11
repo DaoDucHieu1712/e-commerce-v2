@@ -60,7 +60,6 @@ namespace DataAccess
             {
                 throw new Exception(ex.Message);
             }
-            return "null";
         }
 
         public static async Task<string> Update(Category category)
@@ -78,7 +77,6 @@ namespace DataAccess
             {
                 throw new Exception(ex.Message);
             }
-            return "null";
         }
 
         public static async Task Delete(int id)
