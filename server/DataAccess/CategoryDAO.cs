@@ -28,7 +28,7 @@ namespace DataAccess
             return categories;
         }
 
-        public static async Task<Category> GetProduct(int id)
+        public static async Task<Category> GetCategory(int id)
         {
             Category category = new Category();
             try

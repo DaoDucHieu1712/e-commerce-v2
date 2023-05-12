@@ -28,6 +28,24 @@ namespace DataAccess
             return products;
         }
 
+        public static async Task<List<Product>> GetProductsByCategory(int id)
+        {
+            var products = new List<Product>();
+            try
+            {
+                using (var db = new ECommerceContext())
+                {
+                    products = await db.Products.Where(x => x.IsDelete == false && x.CategoryId == id).ToListAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+            return products;
+        }
+
         public static async Task<Product> GetProduct(int id)
         {
             Product product = new Product();

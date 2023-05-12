@@ -36,7 +36,7 @@ namespace Repository.impls
 
         public async Task<CategoryDTO> GetCategory(int id)
         {
-            return _mapper.Map<CategoryDTO>(await CategoryDAO.GetProduct(id));
+            return _mapper.Map<CategoryDTO>(await CategoryDAO.GetCategory(id));
         }
 
         public async Task<string> Update(CategoryUpdateDTO categoryDTO)

@@ -44,3 +44,20 @@ body {
   font-family: "Epilogue", sans-serif;
   overflow-x: hidden;
 }
+
+.swiper-slide {
+  width: 20%;
+}
+
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+  .swiper-slide {
+    width: calc(100% / 3);
+  }
+}
+/* Mobile */
+@media (max-width: 739px) {
+  .swiper-slide {
+    width: 75%;
+  }
+}

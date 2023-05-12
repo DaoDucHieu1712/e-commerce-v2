@@ -34,6 +34,24 @@ namespace ECommerceAPI.Controllers
             }
         }
 
+
+        [HttpGet("Category/{id}")]
+        public async Task<IActionResult> GetProductsByCategory(int id)
+        {
+            try
+            {
+                return StatusCode(200, await repository.GetProductsByCategory(id));
+            }
+            catch (ApplicationException ae)
+            {
+                return StatusCode(400, ae.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct(int id)
         {
