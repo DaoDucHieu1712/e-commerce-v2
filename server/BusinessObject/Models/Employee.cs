@@ -17,6 +17,7 @@ namespace BusinessObject.Models
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public string Image { get; set; }
         public string FullName { get; set; }
         public bool Gender { get; set; }
         public DateTime DayOfBirth { get; set; }

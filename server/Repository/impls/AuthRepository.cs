@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessObject.DTOs.Auth;
+using BusinessObject.Models;
 using DataAccess;
 using System;
 using System.Collections.Generic;
@@ -33,14 +34,14 @@ namespace Repository.impls
             return _mapper.Map<AccountDTO>(await AuthDAO.GetAccountById(id));
         }
 
-        public Task<AccountDTO> SignIn(SignInDTO request)
+        public async Task<Account> SignIn(SignInDTO request)
         {
-            throw new NotImplementedException();
+            return await AuthDAO.SignIn(request);
         }
 
-        public Task<AccountDTO> SignUpWithCustomer(SignUpDTO signupDTO)
+        public async Task<bool> SignUpWithCustomer(SignUpDTO signupDTO)
         {
-            throw new NotImplementedException();
+            return await AuthDAO.SignUpWithCustomer(signupDTO);
         }
     }
 }

@@ -87,12 +87,12 @@ namespace ECommerceAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, ProductCreateUpdateDTO productDTO)
+        public async Task<IActionResult> Update(int id, ProductCreateUpdateDTO request)
         {
             try
             {
-                productDTO.Id = id;
-                return StatusCode(200, await repository.Update(productDTO));
+                request.Id = id;
+                return StatusCode(200, await repository.Update(request));
             }
             catch (ApplicationException ae)
             {

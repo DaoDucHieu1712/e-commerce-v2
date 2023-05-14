@@ -1,4 +1,5 @@
 ﻿using BusinessObject.DTOs.Auth;
+using BusinessObject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace Repository
 {
     public interface IAuthRepository
     {
-        Task<AccountDTO> SignIn(SignInDTO request);
+        Task<Account> SignIn(SignInDTO request);
         Task<AccountDTO> GetAccountById(int id);
         Task<AccountDTO> GetAccountByEmail(string email);
         Task DeleteAccount(int id);
-        Task<AccountDTO> SignUpWithCustomer(SignUpDTO signupDTO);
+        Task<bool> SignUpWithCustomer(SignUpDTO signupDTO);
     }
 }

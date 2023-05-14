@@ -17,7 +17,8 @@ namespace DataAccess
             Account? account;
             using (var db = new ECommerceContext())
             {
-                account = await db.Accounts.FirstOrDefaultAsync(x => x.Email== request.Email && x.Password == request.Password);
+                account = await db.Accounts.Include(x => x.Customer).Include(x => x.Employee).
+                    FirstOrDefaultAsync(x => x.Email == request.Email && x.Password == request.Password);
             }
             return account;
         }
@@ -27,9 +28,9 @@ namespace DataAccess
             Account? account;
             using (var db = new ECommerceContext())
             {
-                account = await db.Accounts.FirstOrDefaultAsync(x => x.Id == id);
+                account = await db.Accounts.Include(x => x.Customer).Include(x => x.Employee).FirstOrDefaultAsync(x => x.Id == id);
             }
-            return account ;
+            return account;
         }
 
         public static async Task<Account> GetAccountByEmail(string email)
@@ -37,7 +38,7 @@ namespace DataAccess
             Account? account;
             using (var db = new ECommerceContext())
             {
-                account = await db.Accounts.FirstOrDefaultAsync(x => x.Email == email);
+                account = await db.Accounts.Include(x => x.Customer).Include(x => x.Employee).FirstOrDefaultAsync(x => x.Email == email);
             }
             return account;
         }
@@ -56,18 +57,35 @@ namespace DataAccess
         {
             using (var db = new ECommerceContext())
             {
-              await db.RefreshTokens.AddAsync(refreshToken);
-              await db.SaveChangesAsync();
+                await db.RefreshTokens.AddAsync(refreshToken);
+                await db.SaveChangesAsync();
             }
         }
 
-        public static async Task<Account> SignUpWithCustomer(Account account)
+        public static async Task<bool> SignUpWithCustomer(SignUpDTO req)
         {
-            using(var db =new ECommerceContext())
+            using (var db = new ECommerceContext())
             {
-                await db.Accounts.AddAsync(account);
-                await db.SaveChangesAsync();
-                return db.Accounts.FirstOrDefault(x => x.Id == account.Id);
+                Account Account = new Account()
+                {
+                    Email = req.Email,
+                    Password = req.Password,
+                    IsActive = true,
+                    IsDelete = false,
+                    Role = 2,
+                    Customer = new Customer()
+                    {
+                        Image = req.Customer!.Image,
+                        FullName = req.Customer!.FullName,
+                        Gender = req.Customer!.Gender,
+                        DayOfBirth = req.Customer!.DayOfBirth,
+                        Address = req.Customer!.Address,
+                        Phone = req.Customer!.Phone,
+                        IsActive = true
+                    }
+                };
+                await db.Accounts.AddAsync(Account);
+                return await db.SaveChangesAsync() > 0;
             }
         }
 
