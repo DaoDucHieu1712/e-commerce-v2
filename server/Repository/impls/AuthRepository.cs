@@ -34,6 +34,21 @@ namespace Repository.impls
             return _mapper.Map<AccountDTO>(await AuthDAO.GetAccountById(id));
         }
 
+        public async Task<RefreshToken> GetRefreshToken(string refreshToken)
+        {
+            return await AuthDAO.GetRefreshToken(refreshToken);
+        }
+
+        public async Task<bool> IvokeRefreshToken(RefreshToken refreshToken)
+        {
+            return await AuthDAO.IvokedRefreshToken(refreshToken);
+        }
+
+        public async Task<bool> SaveRefreshToken(RefreshToken refreshToken)
+        {
+            return await AuthDAO.SaveDb(refreshToken);
+        }
+
         public async Task<Account> SignIn(SignInDTO request)
         {
             return await AuthDAO.SignIn(request);
@@ -42,6 +57,11 @@ namespace Repository.impls
         public async Task<bool> SignUpWithCustomer(SignUpDTO signupDTO)
         {
             return await AuthDAO.SignUpWithCustomer(signupDTO);
+        }
+
+        public async Task<bool> UsedRefreshToken(RefreshToken refreshToken)
+        {
+            return await AuthDAO.UsedRefreshToken(refreshToken);
         }
     }
 }

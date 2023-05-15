@@ -1,16 +1,30 @@
 import { Button, ConfigProvider, Form, Input } from "antd";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { loginHandler } from "../features/auth/authHandler";
+import { selectorAuth } from "../features/auth/authSlice";
 const SignInPage = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleSignIn = async (values: FormData) => {
+    await loginHandler(values, dispatch, navigate);
+  };
+
+  const auth = useAppSelector(selectorAuth);
+
   return (
     <>
       <div className="header">
         <div className="container mx-auto">
-          <img src="logo.png" alt="logo" className="w-[120px]" />
+          <NavLink to="/">
+            <img src="logo.png" alt="logo" className="w-[120px]" />
+          </NavLink>
         </div>
       </div>
       <div className="container mx-auto">
-        <div className="grid grid-cols-3 gap-4">
-          <div></div>
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="hidden lg:block"></div>
           <div className="shadow-lg px-8 pt-10 pb-36">
             <div className="mb-10">
               <h1 className="font-bold text-3xl text-center p-3">
@@ -30,7 +44,10 @@ const SignInPage = () => {
                 },
               }}
             >
-              <Form layout="vertical">
+              <p className="text-red-500 text-sm text-center my-3">
+                {auth.isError}
+              </p>
+              <Form layout="vertical" onFinish={handleSignIn}>
                 <Form.Item
                   name="email"
                   rules={[
@@ -79,7 +96,7 @@ const SignInPage = () => {
               </Form>
             </ConfigProvider>
           </div>
-          <div></div>
+          <div className="hidden lg:block"></div>
         </div>
       </div>
     </>

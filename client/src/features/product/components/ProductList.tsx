@@ -11,7 +11,7 @@ interface ProductListProps {
 }
 
 const ProductList = ({ id }: ProductListProps) => {
-  const { category, loading } = useCategory(id);
+  const { category, loading, error } = useCategory(id);
   const { products } = useProductsByCategory(id);
   return (
     <>

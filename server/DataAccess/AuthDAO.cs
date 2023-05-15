@@ -53,12 +53,12 @@ namespace DataAccess
             }
         }
 
-        public static async Task SaveDb(RefreshToken refreshToken)
+        public static async Task<bool> SaveDb(RefreshToken refreshToken)
         {
             using (var db = new ECommerceContext())
             {
                 await db.RefreshTokens.AddAsync(refreshToken);
-                await db.SaveChangesAsync();
+                return await db.SaveChangesAsync() > 0;
             }
         }
 
@@ -89,5 +89,32 @@ namespace DataAccess
             }
         }
 
+        public static async Task<RefreshToken> GetRefreshToken(string refreshToken)
+        {
+            using (var db = new ECommerceContext())
+            {
+                return await db.RefreshTokens.FirstOrDefaultAsync(x => x.Token == refreshToken);
+            }
+        }
+
+        public static async Task<bool> UsedRefreshToken(RefreshToken refreshToken)
+        {
+            using (var db = new ECommerceContext())
+            {
+                refreshToken.IsUsed = true;
+                db.Update(refreshToken);
+                return await db.SaveChangesAsync() > 0;
+            };
+        }
+
+        public static async Task<bool> IvokedRefreshToken(RefreshToken refreshToken)
+        {
+            using (var db = new ECommerceContext())
+            {
+                refreshToken.IsRevoked = true;
+                db.Update(refreshToken);
+                return await db.SaveChangesAsync() > 0;
+            };
+        }
     }
 }

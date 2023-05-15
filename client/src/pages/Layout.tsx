@@ -20,12 +20,13 @@ const Layout = () => {
         <div className="container mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="flex items-center justify-start">
+              {/* MOBILE */}
               <div className="lg:hidden mr-1">
                 <Button onClick={showDrawer} className="border-none">
                   <BarIcon></BarIcon>
                 </Button>
                 <Drawer
-                  title="Hello, Dao Duc Hieu"
+                  title="DEGREY SHOP"
                   placement="right"
                   onClose={onClose}
                   open={open}
@@ -39,7 +40,10 @@ const Layout = () => {
                   </div>
                 </Drawer>
               </div>
-              <img src="logo.png" alt="" className="object-cover w-[100px]" />
+              {/* MOBILE */}
+              <NavLink to="/">
+                <img src="logo.png" alt="" className="object-cover w-[100px]" />
+              </NavLink>
             </div>
             <div className="hidden lg:flex items-center justify-center gap-x-12 text-lg">
               <NavLink to="/">Home</NavLink>
@@ -48,7 +52,9 @@ const Layout = () => {
               <NavLink to="/my-order">Order</NavLink>
             </div>
             <div className="flex items-center justify-end">
-              <UserIcon></UserIcon>
+              <NavLink to="/signin">
+                <UserIcon></UserIcon>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -95,7 +101,7 @@ const Layout = () => {
               <li>Lorem ipsum dolor sit amet</li>
             </div>
             <div className="flex flex-col gap-4">
-              <h1 className="text-lg font-bold">Services</h1>
+              <h1 className="text-lg font-bold">Contact Me</h1>
               <p>Design by Dao Duc Hieu</p>
               <p>
                 <strong>Phone : </strong>012344556676
