@@ -11,7 +11,8 @@ import {
 } from "@ant-design/icons";
 import { Avatar, MenuProps, Popover } from "antd";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import Breadcumb from "../components/breadcumb/Breadcumb";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -44,8 +45,8 @@ const items: MenuItem[] = [
     getItem("Total", "/dashboard/bill/total"),
   ]),
   getItem("User", "sub3", <TeamOutlined />, [
-    getItem("Customer", "/dashboard/user/customer"),
-    getItem("Employee", "/dashboard/user/employee"),
+    getItem("Customer", "/dashboard/customer"),
+    getItem("Employee", "/dashboard/employee"),
   ]),
   getItem("Setting", "/dashboard/setting", <SettingOutlined />),
   getItem("Logout", "/logout", <LogoutOutlined />),
@@ -108,6 +109,7 @@ const DashBoardLayout: React.FC = () => {
           </div>
         </Header>
         <Content style={{ margin: "16px 16px" }}>
+          <Breadcumb></Breadcumb>
           <div
             style={{
               padding: 24,

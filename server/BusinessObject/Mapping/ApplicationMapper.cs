@@ -31,9 +31,10 @@ namespace BusinessObject.Mapping
                     opt => opt.MapFrom(src => src.Customer!.FullName))
                 .ForMember(
                     dest => dest.EmployeeName,
-                    opt => opt.MapFrom(src => src.Employee!.FullName));
+                    opt => opt.MapFrom(src => src.Employee!.FullName)).ReverseMap();
             //Customer
             CreateMap<Customer, CustomerCreateUpdateDTO>().ReverseMap();
+            CreateMap<Customer, CustomerDTO>().ReverseMap();
         }
     }
 }

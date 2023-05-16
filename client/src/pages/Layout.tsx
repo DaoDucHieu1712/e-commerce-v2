@@ -3,6 +3,8 @@ import UserIcon from "../components/icon/UserIcon";
 import BarIcon from "../components/icon/BarIcon";
 import { useState } from "react";
 import { Button, Drawer } from "antd";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import CartIcon from "../components/icon/CartIcon";
 
 const Layout = () => {
   const [open, setOpen] = useState(false);
@@ -16,7 +18,7 @@ const Layout = () => {
   };
   return (
     <>
-      <div className="header shadow-md">
+      <header className="header shadow-md">
         <div className="container mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="flex items-center justify-start">
@@ -51,18 +53,21 @@ const Layout = () => {
               <NavLink to="/contact">Contact</NavLink>
               <NavLink to="/my-order">Order</NavLink>
             </div>
-            <div className="flex items-center justify-end">
+            <div className="flex items-center justify-end gap-x-3">
+              <NavLink to="/cart">
+                <CartIcon></CartIcon>
+              </NavLink>
               <NavLink to="/signin">
                 <UserIcon></UserIcon>
               </NavLink>
             </div>
           </div>
         </div>
-      </div>
+      </header>
       {/* RenderBody */}
       <Outlet></Outlet>
       {/* RenderBody */}
-      <div className="footer bg-slate-900 text-white py-5">
+      <footer className="footer bg-slate-900 text-white py-5">
         <div className="container mx-auto mt-5">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="flex flex-col  gap-y-5">
@@ -112,7 +117,7 @@ const Layout = () => {
             </div>
           </div>
         </div>
-      </div>
+      </footer>
     </>
   );
 };

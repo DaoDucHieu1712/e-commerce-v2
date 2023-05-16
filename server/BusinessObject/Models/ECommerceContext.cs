@@ -36,7 +36,6 @@ namespace BusinessObject.Models
         public virtual DbSet<Account> Accounts { get; set; }    
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
-
         public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

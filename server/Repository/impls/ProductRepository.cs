@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿    using AutoMapper;
 using BusinessObject.DTOs.Product;
 using BusinessObject.Models;
 using DataAccess;
@@ -43,6 +43,11 @@ namespace Repository.impls
         public async Task<List<ProductDTO>> GetProductsByCategory(int id)
         {
             return _mapper.Map<List<ProductDTO>>(await ProductDAO.GetProductsByCategory(id));   
+        }
+
+        public async Task<List<ProductDTO>> GetProductsDelete()
+        {
+            return _mapper.Map<List<ProductDTO>>(await ProductDAO.GetProductsDelete());
         }
 
         public Task<string> Update(ProductCreateUpdateDTO productDTO)

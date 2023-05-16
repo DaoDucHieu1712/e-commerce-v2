@@ -10,6 +10,24 @@ namespace DataAccess
 {
     public class ProductDAO
     {
+
+        public static async Task<List<Product>> GetProductsDelete()
+        {
+            var products = new List<Product>();
+            try
+            {
+                using (var db = new ECommerceContext())
+                {
+                    products = await db.Products.Where(x => x.IsDelete == true).ToListAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return products;
+        }
+
         public static async Task<List<Product>> GetProducts()
         {
             var products = new List<Product>();

@@ -52,6 +52,24 @@ namespace ECommerceAPI.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("/Dast")]
+        public async Task<IActionResult> GetProductsDelete()
+        {
+            try
+            {
+                return StatusCode(200, await repository.GetProductsDelete());
+            }
+            catch (ApplicationException ae)
+            {
+                return StatusCode(400, ae.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct(int id)
         {
