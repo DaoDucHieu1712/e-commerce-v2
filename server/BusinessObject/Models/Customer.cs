@@ -12,6 +12,7 @@ namespace BusinessObject.Models
     {
         public Customer() {
             Accounts = new HashSet<Account>();
+            Orders= new HashSet<Order>();
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,6 +25,7 @@ namespace BusinessObject.Models
         public string Phone { get; set; }
         public bool IsActive { get; set; }
 
-        public ICollection<Account> Accounts { get; set; }
+        public virtual ICollection<Account> Accounts { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

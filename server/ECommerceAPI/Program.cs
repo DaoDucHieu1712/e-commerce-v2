@@ -67,8 +67,9 @@ builder.Services.AddSwaggerGen(option =>
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
-builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
-
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>(); 
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
 
 var app = builder.Build();
 

@@ -4,14 +4,12 @@ import Layout from "./pages/Layout";
 import SignInPage from "./pages/SignInPage";
 import DashBoardLayout from "./pages/DashBoardLayout";
 import SignUpPage from "./pages/SignUpPage";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ProductTable from "./features/product/components/ProductTable";
 
-const queryClient = new QueryClient();
+
 function App() {
   return (
     <>
-      <QueryClientProvider client={queryClient}>
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
@@ -56,7 +54,7 @@ function App() {
           <Route path="/signup" element={<SignUpPage />}></Route>
           <Route path="*" element={<>404 Not found !</>}></Route>
         </Routes>
-      </QueryClientProvider>
+      
     </>
   );
 }

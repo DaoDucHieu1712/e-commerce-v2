@@ -36,6 +36,8 @@ namespace BusinessObject.Models
         public virtual DbSet<Account> Accounts { get; set; }    
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Order> Orders { get;set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -85,6 +87,45 @@ namespace BusinessObject.Models
                 entity.ToTable("Employee");
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.DayOfBirth).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<Order>(entity => {
+                entity.ToTable("Order");
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.CreateAt).HasDefaultValueSql("getutcdate()");
+
+                entity.HasOne(e => e.Customer)
+                      .WithMany(e => e.Orders)
+                      .HasForeignKey(e => e.CustomerId)
+                      .OnDelete(DeleteBehavior.Restrict)
+                      .HasConstraintName("FK_Order_Customer");
+
+                entity.HasOne(e => e.Employee)
+                     .WithMany(e => e.Orders)
+                     .HasForeignKey(e => e.EmployeeId)
+                     .OnDelete(DeleteBehavior.Restrict)
+                     .HasConstraintName("FK_Order_Employee");
+            });
+
+            modelBuilder.Entity<OrderDetail>(entity => {
+                entity.ToTable("OrderDetail");
+
+                entity.HasKey(e => new { e.OrderId, e.ProductId })
+                   .HasName("PK_Order_Details");
+
+
+                entity.HasOne(e => e.Order)
+                      .WithMany(e => e.OrderDetails)
+                      .HasForeignKey(e => e.OrderId)
+                      .OnDelete(DeleteBehavior.Restrict)
+                      .HasConstraintName("FK_Order_OrderDetail");
+
+                entity.HasOne(e => e.Product)
+                      .WithMany(e => e.OrderDetails)
+                      .HasForeignKey(e => e.ProductId)
+                      .OnDelete(DeleteBehavior.Restrict)
+                      .HasConstraintName("FK_Order_Product");
             });
 
             modelBuilder.Entity<RefreshToken>(entity =>

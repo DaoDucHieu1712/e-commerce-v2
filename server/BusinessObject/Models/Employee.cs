@@ -18,12 +18,13 @@ namespace BusinessObject.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string? Image { get; set; }
-        public string FullName { get; set; }
-        public bool Gender { get; set; }
-        public DateTime DayOfBirth { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
+        public string? FullName { get; set; }
+        public bool? Gender { get; set; }
+        public DateTime? DayOfBirth { get; set; }
+        public string? Address { get; set; }
+        public string? Phone { get; set; }
         public bool IsActive { get;set; }
-        public ICollection<Account> Accounts { get; set; }
+        public virtual ICollection<Account> Accounts { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
