@@ -2,6 +2,8 @@
 using BusinessObject.DTOs.Auth;
 using BusinessObject.DTOs.Category;
 using BusinessObject.DTOs.Customer;
+using BusinessObject.DTOs.Order;
+using BusinessObject.DTOs.OrderDetailDTO;
 using BusinessObject.DTOs.Product;
 using BusinessObject.Models;
 using System;
@@ -35,6 +37,13 @@ namespace BusinessObject.Mapping
             //Customer
             CreateMap<Customer, CustomerCreateUpdateDTO>().ReverseMap();
             CreateMap<Customer, CustomerDTO>().ReverseMap();
+            //Order
+            CreateMap<Order, OrderDTO>().ReverseMap();
+            CreateMap<Order, OrderCreateUpdateDTO>().ReverseMap();
+            //OrderDetail
+            CreateMap<OrderDetail, OrderCreateUpdateDTO>().ReverseMap();
+            CreateMap<OrderDetail, OrderDetailDTO>().ReverseMap();
+
         }
     }
 }

@@ -50,6 +50,11 @@ namespace Repository.impls
             return _mapper.Map<List<ProductDTO>>(await ProductDAO.GetProductsDelete());
         }
 
+        public async Task<bool> Restock(int id)
+        {
+            return await ProductDAO.Restock(id);
+        }
+
         public Task<string> Update(ProductCreateUpdateDTO productDTO)
         {
             var _product = _mapper.Map<Product>(productDTO);

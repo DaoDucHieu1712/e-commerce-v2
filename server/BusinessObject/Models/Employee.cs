@@ -23,7 +23,7 @@ namespace BusinessObject.Models
         public DateTime? DayOfBirth { get; set; }
         public string? Address { get; set; }
         public string? Phone { get; set; }
-        public bool IsActive { get;set; }
+        public bool? IsActive { get;set; }
         public virtual ICollection<Account> Accounts { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }

@@ -53,7 +53,7 @@ namespace ECommerceAPI.Controllers
         }
 
         [HttpGet]
-        [Route("/Dast")]
+        [Route("/Trash")]
         public async Task<IActionResult> GetProductsDelete()
         {
             try
@@ -130,6 +130,23 @@ namespace ECommerceAPI.Controllers
             {
                 await repository.Delete(id);
                 return StatusCode(200, "Delete Product successful !");
+            }
+            catch (ApplicationException ae)
+            {
+                return StatusCode(400, ae.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPut("ReStock/{id}")]
+        public async Task<IActionResult> ReStock(int id)
+        {
+            try
+            {
+                return StatusCode(200, await repository.Restock(id));
             }
             catch (ApplicationException ae)
             {

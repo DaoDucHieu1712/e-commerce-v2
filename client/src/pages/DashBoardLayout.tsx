@@ -1,17 +1,16 @@
-import React, { useState } from "react";
 import {
-  LineChartOutlined,
   FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  ShoppingOutlined,
-  SettingOutlined,
+  LineChartOutlined,
   LogoutOutlined,
+  PieChartOutlined,
+  SettingOutlined,
+  ShoppingOutlined,
+  TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Avatar, MenuProps, Popover } from "antd";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
-import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Avatar, Layout, Menu, MenuProps, Popover, theme } from "antd";
+import React, { useState } from "react";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Breadcumb from "../components/breadcumb/Breadcumb";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -121,7 +120,7 @@ const DashBoardLayout: React.FC = () => {
           </div>
         </Content>
         <Footer className="text-center">
-          Ant Design ©2023 Created by Ant UED
+          Degrey Shop ©2023 Created by Dao Duc Hieu
         </Footer>
       </Layout>
     </Layout>

@@ -120,19 +120,37 @@ namespace DataAccess
         {
             try
             {
-                Product product = new Product();
                 using (var db = new ECommerceContext())
                 {
-                    product = await db.Products.Include(x => x.Category).SingleOrDefaultAsync(x => x.Id == id);
+                    var product = await GetProduct(id);
                     product.IsDelete = true;
                     db.Entry<Product>(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                    db.SaveChangesAsync();
+                    await db.SaveChangesAsync();
                 }
             }
             catch (Exception ex)
             {
 
                 throw new Exception(ex.Message);
+            }
+        }
+
+        public static async Task<bool> Restock(int id)
+        {
+            try
+            {
+                using (var db = new ECommerceContext())
+                {
+                    var product = await GetProduct(id);
+                    product.IsDelete = false;
+                    db.Entry<Product>(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    return await db.SaveChangesAsync() > 0;
+                }
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
             }
         }
     }

@@ -70,6 +70,7 @@ namespace DataAccess
                 {
                     var order = await FindOrderById(id);
                     order.Status = status;
+                    db.Entry<Order>(order).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                     return await db.SaveChangesAsync() > 0;
                 }
             }
