@@ -88,7 +88,7 @@ const SignInPage = () => {
                     size="large"
                     block
                     htmlType="submit"
-                    className="bg-slate-800 text-white hover: opacity-90 border-none outline-none"
+                    className="bg-slate-800 text-white hover: opacity-90 hover:text-white border-none outline-none"
                   >
                     Sign-In
                   </Button>

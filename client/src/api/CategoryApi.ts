@@ -5,6 +5,10 @@ const CategoryApi = {
     const url = `/Category/${id}`;
     return axiosClient.get(url);
   },
+  getAllCategory(): Promise<Category[]> {
+    const url = `/Category`;
+    return axiosClient.get(url);
+  },
 };
 
 export default CategoryApi;

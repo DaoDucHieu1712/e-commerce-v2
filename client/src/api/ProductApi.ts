@@ -10,6 +10,10 @@ const ProductApi = {
     const url = `/Product/Category/${id}`;
     return axiosClient.get(url);
   },
+  create(data: any): Promise<string> {
+    const url = `/Product`;
+    return axiosClient.post(url, data);
+  },
 };
 
 export default ProductApi;

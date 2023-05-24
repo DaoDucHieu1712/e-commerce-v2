@@ -1,4 +1,4 @@
-import { Button, Modal } from "antd";
+import { Button, ConfigProvider, Modal } from "antd";
 import { useState } from "react";
 
 interface ProductDeleteModalProps {
@@ -23,9 +23,20 @@ const ProductDeleteModal = ({ id, name }: ProductDeleteModalProps) => {
 
   return (
     <div className="text-lg text-yellow-400 font-medium">
-      <Button type="primary" onClick={showModal}>
-        Delete
-      </Button>
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: "white",
+            colorBgContainer: "red",
+            colorText: "white",
+            colorTextBase: "white",
+          },
+        }}
+      >
+        <Button onClick={showModal} className="bg-red-500">
+          Delete
+        </Button>
+      </ConfigProvider>
       <Modal
         title="Delete Student"
         open={open}

@@ -17,6 +17,7 @@ const ProductItem = ({ name, image, price }: ProductItemProps) => {
           <Image
             preview={{ visible: false }}
             src={image}
+            className="w-full"
             onClick={() => setVisible(true)}
           />
           <div style={{ display: "none" }}>

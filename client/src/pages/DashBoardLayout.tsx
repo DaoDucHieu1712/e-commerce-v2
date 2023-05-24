@@ -53,9 +53,6 @@ const items: MenuItem[] = [
 
 const DashBoardLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
 
   const navigate = useNavigate();
 
@@ -109,13 +106,7 @@ const DashBoardLayout: React.FC = () => {
         </Header>
         <Content style={{ margin: "16px 16px" }}>
           <Breadcumb></Breadcumb>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-            }}
-          >
+          <div className="p-6 min-h-[360px] bg-white">
             <Outlet></Outlet>
           </div>
         </Content>

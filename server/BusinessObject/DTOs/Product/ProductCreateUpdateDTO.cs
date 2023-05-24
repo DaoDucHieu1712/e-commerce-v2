@@ -16,5 +16,9 @@ namespace BusinessObject.DTOs.Product
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
+        [JsonIgnore]
+        public bool? IsActive { get; set; } = true;
+        [JsonIgnore]
+        public bool? IsDelete { get; set; } = false;
     }
 }

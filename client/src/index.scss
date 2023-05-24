@@ -27,12 +27,7 @@ textarea {
   background-color: transparent;
   outline: none;
 }
-button {
-  cursor: pointer;
-  background-color: transparent;
-  outline: none;
-  border: 0;
-}
+
 body {
   min-height: 100vh;
   font-weight: 400;
@@ -59,5 +54,34 @@ body {
 @media (max-width: 739px) {
   .swiper-slide {
     width: 75%;
+  }
+}
+
+.ant-btn-primary {
+  color: #fff;
+  background-color: #1677ff;
+  box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+}
+
+.hidden-input {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.trash {
+  width: 50px;
+  margin: 10px auto;
+  cursor: pointer;
+  z-index: 999999;
+  svg,
+  path {
+    width: 100%;
   }
 }

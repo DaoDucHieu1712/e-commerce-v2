@@ -51,7 +51,8 @@ const SignUpPage = () => {
             <ConfigProvider
               theme={{
                 token: {
-                  colorPrimary: "#1e2021",
+                  colorText: "white",
+                  colorTextBase: "white",
                 },
               }}
             >

@@ -13,9 +13,9 @@ const Breadcumb = () => {
           const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
           return isLast ? (
-            <Breadcrumb.Item>{capatilize(name)}</Breadcrumb.Item>
+            <Breadcrumb.Item key={name}>{capatilize(name)}</Breadcrumb.Item>
           ) : (
-            <Breadcrumb.Item>
+            <Breadcrumb.Item key={name}>
               <NavLink to={`${routeTo}`}>{capatilize(name)}</NavLink>
             </Breadcrumb.Item>
           );
