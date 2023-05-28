@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Models;
+using DataAccess.Utils;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace DataAccess
             {
                 using (var db = new ECommerceContext())
                 {
-                    products = await db.Products.Where(x => x.IsDelete == false).ToListAsync();
+                    products = await db.Products.Include(x => x.Category).Where(x => x.IsDelete == false).ToListAsync();
                 }
             }
             catch (Exception ex)
@@ -152,6 +153,69 @@ namespace DataAccess
 
                 throw new Exception(e.Message);
             }
+        }
+
+        public static async Task<List<Product>> FilterProduct(int? pageIndex,string? name, decimal? toPrice, decimal? fromPrice, int? categoryId, string? sortType)
+        {
+            List<Product> products = new List<Product>();
+             try
+            {
+                using (var db = new ECommerceContext())
+                {
+                    products = await GetProducts();
+
+                    if (sortType != null)
+                    {
+                        switch (sortType)
+                        {
+                            case "name-asc":
+                                products = products.OrderBy(x => x.Name).ToList();
+                                break;
+                            case "name-desc":
+                                products = products.OrderByDescending(x => x.Name).ToList();
+                                break;
+                            case "price-asc":
+                                products = products.OrderBy(x => x.Price).ToList();
+                                break;
+                            case "price-desc":
+                                products = products.OrderByDescending(x => x.Price).ToList();
+                                break;
+                            default:
+                                products = products.OrderBy(x => x.Name).ToList();
+                                break;
+                        }
+                    }
+
+
+                    if (name!=null)
+                    {
+                        products = products.Where(x => x.Name.ToLower().Contains(name.ToLower())).ToList();
+                    }
+
+                    if(toPrice != null)
+                    {
+                        products = products.Where(x => x.Price >= toPrice).ToList();
+                    }
+
+                    if (fromPrice != null)
+                    {
+                        products = products.Where(x => x.Price <= fromPrice).ToList();
+                    }
+
+                    if(categoryId != null)
+                    {
+                        products = products.Where(x => x.CategoryId == categoryId).ToList();
+                    }
+
+                    products = await PaginatedList<Product>.CreateAsync(products, pageIndex ?? 1, 6);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return products;
         }
     }
 }

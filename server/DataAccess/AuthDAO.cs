@@ -89,6 +89,33 @@ namespace DataAccess
             }
         }
 
+        public static async Task<bool> SignUpWithEmployee(RegisterEmployee req)
+        {
+            using (var db = new ECommerceContext())
+            {
+                Account Account = new Account()
+                {
+                    Email = req.Email,
+                    Password = req.Password,
+                    IsActive = true,
+                    IsDelete = false,
+                    Role = 1,
+                    Employee = new Employee()
+                    {
+                        Image = req.Employee!.Image,
+                        FullName = req.Employee!.FullName,
+                        Gender = req.Employee!.Gender,
+                        DayOfBirth = req.Employee!.DayOfBirth,
+                        Address = req.Employee!.Address,
+                        Phone = req.Employee!.Phone,
+                        IsActive = true
+                    }
+                };
+                await db.Accounts.AddAsync(Account);
+                return await db.SaveChangesAsync() > 0;
+            }
+        }
+
         public static async Task<RefreshToken> GetRefreshToken(string refreshToken)
         {
             using (var db = new ECommerceContext())
@@ -118,3 +145,4 @@ namespace DataAccess
         }
     }
 }
+

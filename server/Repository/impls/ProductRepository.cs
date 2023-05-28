@@ -30,6 +30,11 @@ namespace Repository.impls
             await ProductDAO.DeleteProduct(id);
         }
 
+        public async Task<List<ProductDTO>> FilterProduct(int? pageIndex, string? name, decimal? toPrice, decimal? fromPrice, int? categoryId, string? sortType)
+        {
+            return _mapper.Map<List<ProductDTO>>(await ProductDAO.FilterProduct(pageIndex, name, toPrice, fromPrice, categoryId, sortType));
+        }
+
         public async Task<ProductDTO> GetProduct(int id)
         {
            return _mapper.Map<ProductDTO>(await ProductDAO.GetProduct(id));

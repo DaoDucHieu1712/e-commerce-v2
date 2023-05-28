@@ -18,7 +18,6 @@ namespace ECommerceAPI.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-
         private IAuthRepository repository;
         private readonly IConfiguration configuration;
         public static AccountInfoDTO user = new();
@@ -91,6 +90,28 @@ namespace ECommerceAPI.Controllers
                 var _account = await AuthDAO.GetAccountByEmail(request.Email);
                 if (_account != null) return Ok("Email is already !!!");
                 var isSave = await repository.SignUpWithCustomer(request);
+                if (isSave) return Ok(isSave);
+                return Conflict();
+            }
+            catch (ApplicationException ae)
+            {
+                return StatusCode(400, ae.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPost("SignUpWithEmployee")]
+        public async Task<IActionResult> SignUpWithEmployee(RegisterEmployee request)
+        {
+            try
+            {
+                if (request is null) return BadRequest();
+                var _account = await AuthDAO.GetAccountByEmail(request.Email);
+                if (_account != null) return Ok("Email is already !!!");
+                var isSave = await repository.SignUpWithEmployee(request);
                 if (isSave) return Ok(isSave);
                 return Conflict();
             }

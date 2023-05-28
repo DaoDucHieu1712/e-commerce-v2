@@ -59,6 +59,11 @@ namespace Repository.impls
             return await AuthDAO.SignUpWithCustomer(signupDTO);
         }
 
+        public async Task<bool> SignUpWithEmployee(RegisterEmployee signupDTO)
+        {
+            return await AuthDAO.SignUpWithEmployee(signupDTO);
+        }
+
         public async Task<bool> UsedRefreshToken(RefreshToken refreshToken)
         {
             return await AuthDAO.UsedRefreshToken(refreshToken);

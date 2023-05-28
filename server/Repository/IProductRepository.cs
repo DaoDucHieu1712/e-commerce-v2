@@ -18,5 +18,6 @@ namespace Repository
         Task<string> Create(ProductCreateUpdateDTO productDTO);
         Task<string> Update(ProductCreateUpdateDTO productDTO);
         Task Delete (int id);
+        Task<List<ProductDTO>> FilterProduct(int? pageIndex, string? name, decimal? toPrice, decimal? fromPrice, int? categoryId, string? sortType);
     }
 }

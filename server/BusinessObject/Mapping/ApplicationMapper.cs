@@ -2,6 +2,7 @@
 using BusinessObject.DTOs.Auth;
 using BusinessObject.DTOs.Category;
 using BusinessObject.DTOs.Customer;
+using BusinessObject.DTOs.Employee;
 using BusinessObject.DTOs.Order;
 using BusinessObject.DTOs.OrderDetailDTO;
 using BusinessObject.DTOs.Product;
@@ -43,6 +44,9 @@ namespace BusinessObject.Mapping
             //OrderDetail
             CreateMap<OrderDetail, OrderCreateUpdateDTO>().ReverseMap();
             CreateMap<OrderDetail, OrderDetailDTO>().ReverseMap();
+            //Employee
+            CreateMap<Employee, EmployeeDTO>().ReverseMap();
+            CreateMap<Employee, EmployeeCreateUpdateDTO>().ReverseMap();
 
         }
     }

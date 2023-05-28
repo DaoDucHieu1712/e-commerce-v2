@@ -15,6 +15,7 @@ namespace Repository
         Task<AccountDTO> GetAccountByEmail(string email);
         Task DeleteAccount(int id);
         Task<bool> SignUpWithCustomer(SignUpDTO signupDTO);
+        Task<bool> SignUpWithEmployee(RegisterEmployee signupDTO);
         Task<RefreshToken> GetRefreshToken(string refreshToken);
         Task<bool> SaveRefreshToken(RefreshToken refreshToken);
         Task<bool> UsedRefreshToken(RefreshToken refreshToken);

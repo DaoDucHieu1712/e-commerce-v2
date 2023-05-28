@@ -157,5 +157,22 @@ namespace ECommerceAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet("Filter")]
+        public async Task<IActionResult> Filter(int? pageIndex, string? name, decimal? toPrice, decimal? fromPrice, int? categoryId, string? sortType)
+        {
+            try
+            {
+                return StatusCode(200, await repository.FilterProduct(pageIndex, name, toPrice, fromPrice, categoryId,sortType));
+            }
+            catch (ApplicationException ae)
+            {
+                return StatusCode(400, ae.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }
