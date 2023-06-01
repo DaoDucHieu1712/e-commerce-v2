@@ -8,7 +8,7 @@ interface ProductItemProps {
   price: number;
 }
 
-const ProductItem = ({ name, image, price }: ProductItemProps) => {
+const ProductItem = ({ id, name, image, price }: ProductItemProps) => {
   const [visible, setVisible] = useState(false);
   return (
     <>
@@ -28,10 +28,15 @@ const ProductItem = ({ name, image, price }: ProductItemProps) => {
             </Image.PreviewGroup>
           </div>
         </div>
-        <p className="text-center my-3 font-medium">{name}</p>
-        <div className="flex items-center justify-between mt-12">
-          <span className="text-red-600 font-medium">{price} $</span>
-          <button className="border-none outline-none py-2 px-3 bg-slate-600 text-white hover:opacity-90">
+        <p className="text-center my-3 font-medium min-h-[35px]">{name}</p>
+        <p className="text-red-600 font-medium text-center">{price} $</p>
+        <div className="flex items-center justify-between mt-12 gap-x-3">
+          <a href={`/store/${id}`} className="w-full">
+            <button className="border-none rounded-md outline-none py-2 px-3 bg-slate-900 text-white hover:opacity-90 w-full">
+              Detail
+            </button>
+          </a>
+          <button className="border-none rounded-md outline-none py-2 px-3 w-full bg-slate-900 text-white hover:opacity-90">
             Add to Cart
           </button>
         </div>

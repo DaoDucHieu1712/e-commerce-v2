@@ -155,7 +155,7 @@ namespace DataAccess
             }
         }
 
-        public static async Task<List<Product>> FilterProduct(int? pageIndex,string? name, decimal? toPrice, decimal? fromPrice, int? categoryId, string? sortType)
+        public static async Task<List<Product>> FilterProduct(string? name, decimal? toPrice, decimal? fromPrice, int? categoryId, string? sortType)
         {
             List<Product> products = new List<Product>();
              try
@@ -186,7 +186,6 @@ namespace DataAccess
                         }
                     }
 
-
                     if (name!=null)
                     {
                         products = products.Where(x => x.Name.ToLower().Contains(name.ToLower())).ToList();
@@ -207,7 +206,6 @@ namespace DataAccess
                         products = products.Where(x => x.CategoryId == categoryId).ToList();
                     }
 
-                    products = await PaginatedList<Product>.CreateAsync(products, pageIndex ?? 1, 6);
 
                 }
             }

@@ -1,11 +1,10 @@
-import { Button, Form, Input, InputNumber, Modal, Select, Upload } from "antd";
-import { useState } from "react";
-import UploadImage from "../../../components/uploadImage/UploadImage";
-import useCategory from "../../../hooks/category/useCategory";
 import { useQuery } from "@tanstack/react-query";
+import { Button, Form, Input, InputNumber, Modal, Select } from "antd";
+import { useState } from "react";
+import { toast } from "react-toastify";
 import CategoryApi from "../../../api/CategoryApi";
 import ProductApi from "../../../api/ProductApi";
-import { toast } from "react-toastify";
+import UploadImage from "../../../components/uploadImage/UploadImage";
 
 const ProductCreateModal = () => {
   const [open, setOpen] = useState(false);

@@ -1,7 +1,17 @@
 import ProductTableItem from "./ProductTableItem";
 import ProductCreateModal from "./ProductCreateModal";
+import { useQuery } from "@tanstack/react-query";
+import ProductApi from "../../../api/ProductApi";
+import { Product } from "../../../models/Product";
 
 const ProductTable = () => {
+  const { data } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      return await ProductApi.getAll();
+    },
+  });
+
   return (
     <>
       <ProductCreateModal></ProductCreateModal>
@@ -33,13 +43,11 @@ const ProductTable = () => {
           </tr>
         </thead>
         <tbody>
-          <ProductTableItem></ProductTableItem>
-          <ProductTableItem></ProductTableItem>
-          <ProductTableItem></ProductTableItem>
-          <ProductTableItem></ProductTableItem>
-          <ProductTableItem></ProductTableItem>
-          <ProductTableItem></ProductTableItem>
-          <ProductTableItem></ProductTableItem>
+          {data?.map((item: Product) => {
+            return (
+              <ProductTableItem key={item.id} item={item}></ProductTableItem>
+            );
+          })}
         </tbody>
       </table>
     </>

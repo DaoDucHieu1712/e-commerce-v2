@@ -12,6 +12,7 @@ import { Avatar, Layout, Menu, MenuProps, Popover, theme } from "antd";
 import React, { useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Breadcumb from "../components/breadcumb/Breadcumb";
+import Logo from "../assets/logo.png";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -70,11 +71,7 @@ const DashBoardLayout: React.FC = () => {
         theme="light"
       >
         <NavLink to="/" className="block">
-          <img
-            src="logo.png"
-            alt=""
-            className="w-[100px] mx-auto justify-center"
-          />
+          <img src={Logo} alt="" className="w-[100px] mx-auto justify-center" />
         </NavLink>
         <Menu
           onClick={handlerRedirect}

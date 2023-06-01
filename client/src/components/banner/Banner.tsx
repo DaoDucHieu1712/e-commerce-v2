@@ -3,7 +3,7 @@ import { Carousel } from "antd";
 const Banner = () => {
   return (
     <>
-      <div className="container mx-auto">
+      <div className="container mx-auto my-20">
         <Carousel autoplay>
           <img
             src="https://file.hstatic.net/1000281824/file/2ecedf6f821d5e43070c_fe5354733485427890bf420999152c7d.jpg"

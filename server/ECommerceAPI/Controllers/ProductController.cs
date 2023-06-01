@@ -52,8 +52,7 @@ namespace ECommerceAPI.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("/Trash")]
+        [HttpGet("Trash")]
         public async Task<IActionResult> GetProductsDelete()
         {
             try
@@ -147,6 +146,24 @@ namespace ECommerceAPI.Controllers
             try
             {
                 return StatusCode(200, await repository.Restock(id));
+            }
+            catch (ApplicationException ae)
+            {
+                return StatusCode(400, ae.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+
+        [HttpPost("Search")]
+        public async Task<IActionResult> Search([FromBody] ProductFilterDTO productFilter)
+        {
+            try
+            {
+                return StatusCode(200, await repository.SearchProduct(productFilter.Name, productFilter.ToPrice, productFilter.FromPrice, productFilter.CategoryId, productFilter.SortType));
             }
             catch (ApplicationException ae)
             {
